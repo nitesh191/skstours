@@ -126,7 +126,7 @@ export function Contact() {
                     Address
                   </h4>
                   <p className="text-[var(--charcoal)]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    A 103, Kalka Ji,<br />
+                    103, Kalka Ji,<br />
                     New Delhi 110019
                   </p>
                 </div>
