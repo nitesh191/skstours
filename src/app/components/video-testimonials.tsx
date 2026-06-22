@@ -114,11 +114,23 @@ export function VideoTestimonials() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;
+    const container = scrollRef.current;
     const scrollAmount = 320;
-    scrollRef.current.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
+
+    if (direction === 'right') {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    } else {
+      if (container.scrollLeft <= 10) {
+        container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -181,19 +193,6 @@ export function VideoTestimonials() {
             <div key={video.id} className="snap-start">
               <VideoCard video={video} />
             </div>
-          ))}
-        </div>
-
-        {/* Scroll indicator dots */}
-        <div className="flex justify-center gap-1.5 mt-8">
-          {videoTestimonials.map((_, idx) => (
-            <div
-              key={idx}
-              className="w-2 h-2 rounded-full transition-all"
-              style={{
-                background: idx < 3 ? '#66BFFF' : 'rgba(102,191,255,0.25)',
-              }}
-            />
           ))}
         </div>
       </div>
