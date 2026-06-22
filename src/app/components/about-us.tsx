@@ -9,8 +9,8 @@ export function AboutUs() {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1763480005793-501a0cbe1ac9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaW1hbGF5YW4lMjB2YWxsZXklMjBsYW5kc2NhcGUlMjB0cmVra2luZ3xlbnwxfHx8fDE3ODExOTU3NzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Himalayan Valley"
+                src="/images/about-sks-tours.png"
+                alt="SKR Tours Guide with Pilgrims"
                 className="w-full h-[500px] object-cover"
               />
             </div>
@@ -25,16 +25,21 @@ export function AboutUs() {
                 className="text-3xl sm:text-4xl md:text-5xl mb-3 text-[var(--navy)]"
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
-                About Himalayan Yatra
+                About SKR Tours
               </h2>
               <div className="w-20 h-1 bg-[var(--sky-blue)]"></div>
+              <div className="mt-6 mb-4 bg-gradient-to-r from-[var(--sky-blue)]/10 to-transparent border-l-4 border-[var(--sky-blue)] p-4 rounded-r-lg shadow-sm">
+                <p className="text-[var(--sky-blue)] font-medium text-lg leading-relaxed">
+                  "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।"
+                </p>
+              </div>
             </div>
 
             <p 
               className="text-lg text-[var(--charcoal)] mb-6 leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              For over 15 years, Himalayan Yatra has been guiding pilgrims on their sacred journey 
+              With deep expertise in Himalayan routes, SKR Tours has been guiding pilgrims on their sacred journey 
               to the most revered sites in the Himalayas. We believe that every pilgrimage is not 
               just a trip, but a transformative spiritual experience.
             </p>
@@ -65,43 +70,7 @@ export function AboutUs() {
               ))}
             </div>
 
-            <div className="flex gap-4">
-              <div className="text-center">
-                <div 
-                  className="text-4xl mb-2 text-[var(--sky-blue)]"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  15+
-                </div>
-                <div className="text-sm text-[var(--charcoal)]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Years of Service
-                </div>
-              </div>
-              <div className="w-px bg-gray-300"></div>
-              <div className="text-center">
-                <div 
-                  className="text-4xl mb-2 text-[var(--sky-blue)]"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  5000+
-                </div>
-                <div className="text-sm text-[var(--charcoal)]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Happy Pilgrims
-                </div>
-              </div>
-              <div className="w-px bg-gray-300"></div>
-              <div className="text-center">
-                <div 
-                  className="text-4xl mb-2 text-[var(--sky-blue)]"
-                  style={{ fontFamily: 'Playfair Display, serif' }}
-                >
-                  50+
-                </div>
-                <div className="text-sm text-[var(--charcoal)]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Yatra Packages
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

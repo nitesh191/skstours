@@ -5,6 +5,7 @@ import { PopularYatras } from "./components/popular-yatras";
 import { TourPackages } from "./components/tour-packages";
 import { AboutUs } from "./components/about-us";
 import { WhyChooseUs } from "./components/why-choose-us";
+import { VideoTestimonials } from "./components/video-testimonials";
 import { Testimonials } from "./components/testimonials";
 import { FAQ } from "./components/faq";
 import { Contact } from "./components/contact";
@@ -30,6 +31,7 @@ function HomePage() {
       <TourPackages />
       <AboutUs />
       <WhyChooseUs />
+      <VideoTestimonials />
       <Testimonials />
       <FAQ />
       <Contact />

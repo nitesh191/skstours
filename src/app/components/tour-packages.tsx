@@ -15,7 +15,15 @@ export function TourPackages() {
           >
             Tour Packages
           </h2>
-          <div className="w-20 h-1 bg-[var(--sky-blue)] mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-[var(--sky-blue)] mx-auto mb-8"></div>
+          <div className="mb-10 inline-block bg-white px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(102,191,255,0.15)] border border-[var(--sky-blue)]/20 relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--off-white)] px-3 text-[var(--sky-blue)]">
+              <svg className="w-6 h-6 opacity-60" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+            </div>
+            <div className="text-[var(--sky-blue)] font-medium text-lg md:text-xl tracking-wide">
+              ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् ।
+            </div>
+          </div>
           <p 
             className="text-lg text-[var(--charcoal)] max-w-2xl mx-auto"
             style={{ fontFamily: 'Inter, sans-serif' }}

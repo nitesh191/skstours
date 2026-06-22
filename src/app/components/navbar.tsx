@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Mountain } from "lucide-react";
+import { ChevronDown, Mountain, Menu, X, Phone, Mail } from "lucide-react";
 import { Link, useLocation } from "react-router";
+import logoUrl from "../../../assets/skr logo.png";
 
 const packageLinks = [
   { id: "adi-kailash", label: "Adi Kailash & Om Parvat", icon: "🏔️" },
@@ -14,6 +15,8 @@ const packageLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobilePackagesOpen, setIsMobilePackagesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -26,6 +29,8 @@ export function Navbar() {
 
   useEffect(() => {
     setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+    setIsMobilePackagesOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -37,6 +42,21 @@ export function Navbar() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileMenuOpen]);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobilePackagesOpen(false);
+  };
 
   return (
     <>
@@ -62,7 +82,7 @@ export function Navbar() {
             inset 0 1px 0 rgba(255, 255, 255, 0.18);
         }
 
-        /* ── Nav text: white on hero dark bg, adapts when scrolled ── */
+        /* ── Nav text ── */
         .nav-link {
           font-family: 'Inter', sans-serif;
           font-size: 0.875rem;
@@ -132,7 +152,7 @@ export function Navbar() {
           padding: 9px 24px;
           border-radius: 999px;
           border: none;
-          background: linear-gradient(135deg, #3fa9f5 0%, #0e7dd6 100%);
+          background: linear-gradient(135deg, #66BFFF 0%, #0e7dd6 100%);
           box-shadow:
             0 4px 16px rgba(14, 125, 214, 0.45),
             inset 0 1px 0 rgba(255, 255, 255, 0.35);
@@ -157,7 +177,7 @@ export function Navbar() {
           width: 36px;
           height: 36px;
           border-radius: 11px;
-          background: linear-gradient(135deg, #3fa9f5, #0b6cb8);
+          background: linear-gradient(135deg, #66BFFF, #0b6cb8);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -169,9 +189,99 @@ export function Navbar() {
         .nav-divider {
           display: none;
         }
+
+        /* ── Mobile fullscreen overlay ── */
+        .mobile-menu-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 60;
+          background: rgba(6, 14, 30, 0.97);
+          backdrop-filter: blur(24px) saturate(150%);
+          -webkit-backdrop-filter: blur(24px) saturate(150%);
+          display: flex;
+          flex-direction: column;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease;
+        }
+        .mobile-menu-overlay.open {
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        .mobile-menu-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding: 18px 28px;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.35rem;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          transition: color 0.2s ease, background 0.2s ease;
+          background: transparent;
+          border-left: none;
+          border-right: none;
+          border-top: none;
+          cursor: pointer;
+        }
+        .mobile-menu-link:hover, .mobile-menu-link:active {
+          color: #66BFFF;
+          background: rgba(102, 191, 255, 0.06);
+        }
+
+        .mobile-sub-link {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 14px 28px 14px 44px;
+          font-family: 'Inter', sans-serif;
+          font-size: 1rem;
+          font-weight: 500;
+          color: rgba(200, 220, 255, 0.75);
+          text-decoration: none;
+          transition: color 0.15s ease, background 0.15s ease;
+        }
+        .mobile-sub-link:hover, .mobile-sub-link:active {
+          color: #66BFFF;
+          background: rgba(102, 191, 255, 0.08);
+        }
+
+        /* ── Hamburger button ── */
+        .hamburger-btn {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.08);
+          cursor: pointer;
+          transition: background 0.2s ease;
+          flex-shrink: 0;
+        }
+        .hamburger-btn:hover {
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 768px) {
+          .hamburger-btn {
+            display: flex;
+          }
+          .desktop-center-links {
+            display: none !important;
+          }
+          .desktop-book-btn {
+            display: none !important;
+          }
+        }
       `}</style>
 
-      {/* Fixed outer shell — pointer-events none so page underneath is clickable */}
+      {/* Fixed outer shell */}
       <div
         style={{
           position: "fixed",
@@ -179,7 +289,7 @@ export function Navbar() {
           left: 0,
           right: 0,
           zIndex: 50,
-          padding: isScrolled ? "10px 24px" : "18px 24px",
+          padding: isScrolled ? "10px 16px" : "18px 16px",
           transition: "padding 0.35s ease",
           pointerEvents: "none",
           display: "flex",
@@ -189,24 +299,22 @@ export function Navbar() {
         <nav
           className={`liquid-nav${isScrolled ? " scrolled" : ""}`}
           style={{
-            width: "min(1280px, calc(100% - 0px))",
+            width: "min(1280px, 100%)",
             borderRadius: "999px",
             padding: "0 10px",
             transition: "all 0.35s cubic-bezier(0.4,0,0.2,1)",
             pointerEvents: "all",
           }}
         >
-          {/* ── 3-column grid: logo | center links | book now ── */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "auto 1fr auto",
+              display: "flex",
               alignItems: "center",
-              height: "70px",
-              gap: "8px",
+              justifyContent: "space-between",
+              height: "64px",
             }}
           >
-            {/* LEFT — Logo */}
+            {/* LEFT — Logo + Name */}
             <Link
               to="/"
               style={{
@@ -218,30 +326,34 @@ export function Navbar() {
                 flexShrink: 0,
               }}
             >
-              <div className="logo-glass">
-                <Mountain style={{ width: 18, height: 18, color: "#fff" }} />
-              </div>
+              <img 
+                src={logoUrl} 
+                alt="SKR Tours Logo" 
+                style={{ height: "42px", width: "auto", objectFit: "contain" }} 
+              />
               <span
                 style={{
                   fontFamily: "Playfair Display, serif",
                   fontWeight: 700,
-                  fontSize: "1rem",
+                  fontSize: "1.05rem",
                   color: "rgba(255,255,255,0.95)",
                   letterSpacing: "0.04em",
                   whiteSpace: "nowrap",
                 }}
               >
-                SKS TOURS
+                SKR TOURS
               </span>
             </Link>
 
-            {/* CENTER — Nav links, truly centered */}
+            {/* CENTER — Desktop Nav links */}
             <div
+              className="desktop-center-links"
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "12px",
+                flex: 1,
               }}
             >
               <div className="nav-divider" />
@@ -314,8 +426,8 @@ export function Navbar() {
               <div className="nav-divider" />
             </div>
 
-            {/* RIGHT — Book Now */}
-            <div style={{ display: "flex", alignItems: "center", paddingRight: "4px" }}>
+            {/* RIGHT — Book Now (desktop) */}
+            <div className="desktop-book-btn" style={{ display: "flex", alignItems: "center", paddingRight: "4px" }}>
               {isHome ? (
                 <a href="#packages">
                   <button className="book-btn">Book Now</button>
@@ -326,8 +438,174 @@ export function Navbar() {
                 </a>
               )}
             </div>
+
+            {/* RIGHT — Hamburger (mobile) */}
+            <button
+              className="hamburger-btn"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu style={{ width: 22, height: 22, color: "#fff" }} />
+            </button>
           </div>
         </nav>
+      </div>
+
+      {/* ── Mobile Fullscreen Menu Overlay ── */}
+      <div className={`mobile-menu-overlay${isMobileMenuOpen ? " open" : ""}`}>
+        {/* Top bar with logo + close */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "20px 20px 16px",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              textDecoration: "none",
+            }}
+          >
+            <img
+              src={logoUrl}
+              alt="SKR Tours Logo"
+              style={{ height: "40px", width: "auto", objectFit: "contain" }}
+            />
+            <span
+              style={{
+                fontFamily: "Playfair Display, serif",
+                fontWeight: 700,
+                fontSize: "1.1rem",
+                color: "rgba(255,255,255,0.95)",
+                letterSpacing: "0.04em",
+              }}
+            >
+              SKR TOURS
+            </span>
+          </Link>
+          <button
+            onClick={closeMobileMenu}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 42,
+              height: 42,
+              borderRadius: 12,
+              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(255,255,255,0.08)",
+              cursor: "pointer",
+            }}
+            aria-label="Close menu"
+          >
+            <X style={{ width: 22, height: 22, color: "#fff" }} />
+          </button>
+        </div>
+
+        {/* Menu links */}
+        <div style={{ flex: 1, overflowY: "auto", paddingTop: "8px" }}>
+          {/* Home */}
+          {isHome ? (
+            <a href="#home" className="mobile-menu-link" onClick={closeMobileMenu}>
+              Home
+            </a>
+          ) : (
+            <Link to="/" className="mobile-menu-link" onClick={closeMobileMenu}>
+              Home
+            </Link>
+          )}
+
+          {/* Tour Packages (expandable) */}
+          <button
+            className="mobile-menu-link"
+            onClick={() => setIsMobilePackagesOpen(!isMobilePackagesOpen)}
+          >
+            Tour Packages
+            <ChevronDown
+              style={{
+                width: 20,
+                height: 20,
+                color: "#66BFFF",
+                transition: "transform 0.25s ease",
+                transform: isMobilePackagesOpen ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            />
+          </button>
+
+          {/* Sub-links for packages */}
+          <div
+            style={{
+              maxHeight: isMobilePackagesOpen ? "500px" : "0px",
+              overflow: "hidden",
+              transition: "max-height 0.35s ease",
+              background: "rgba(0,0,0,0.15)",
+            }}
+          >
+            {packageLinks.map((pkg) => (
+              <Link
+                key={pkg.id}
+                to={`/package/${pkg.id}`}
+                className="mobile-sub-link"
+                onClick={closeMobileMenu}
+              >
+                <span style={{ fontSize: "1.15rem" }}>{pkg.icon}</span>
+                {pkg.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* About Us */}
+          {isHome ? (
+            <a href="#about" className="mobile-menu-link" onClick={closeMobileMenu}>
+              About Us
+            </a>
+          ) : (
+            <Link to="/#about" className="mobile-menu-link" onClick={closeMobileMenu}>
+              About Us
+            </Link>
+          )}
+
+          {/* Contact */}
+          {isHome ? (
+            <a href="#contact" className="mobile-menu-link" onClick={closeMobileMenu}>
+              Contact
+            </a>
+          ) : (
+            <Link to="/#contact" className="mobile-menu-link" onClick={closeMobileMenu}>
+              Contact
+            </Link>
+          )}
+        </div>
+
+        {/* Bottom CTA */}
+        <div style={{ padding: "20px 28px 32px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          {isHome ? (
+            <a href="#packages" onClick={closeMobileMenu} style={{ textDecoration: "none" }}>
+              <button
+                className="book-btn"
+                style={{ width: "100%", padding: "16px", fontSize: "1rem", borderRadius: "16px" }}
+              >
+                Book Your Yatra Now
+              </button>
+            </a>
+          ) : (
+            <a href="#contact-form" onClick={closeMobileMenu} style={{ textDecoration: "none" }}>
+              <button
+                className="book-btn"
+                style={{ width: "100%", padding: "16px", fontSize: "1rem", borderRadius: "16px" }}
+              >
+                Book Your Yatra Now
+              </button>
+            </a>
+          )}
+        </div>
       </div>
     </>
   );

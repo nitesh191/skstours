@@ -42,7 +42,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-20 pb-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 
@@ -60,12 +60,12 @@ export function FAQ() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
+        <Accordion type="single" collapsible className="space-y-4 pb-2">
           {faqs.map((faq, idx) => (
             <AccordionItem
               key={idx}
               value={`item-${idx}`}
-              className="border border-gray-200 rounded-lg px-6 hover:border-[var(--sky-blue)] transition-colors"
+              className="border border-gray-200 rounded-lg px-6 hover:border-[var(--sky-blue)] transition-colors last:border-b"
             >
               <AccordionTrigger 
                 className="text-left hover:text-[var(--sky-blue)] transition-colors py-4"

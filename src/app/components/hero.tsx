@@ -1,13 +1,13 @@
 import { Button } from "./ui/button";
-import { Shield, Award, CheckCircle, ChevronDown } from "lucide-react";
+import { Shield, Map, Heart, ChevronDown } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1759262988017-199c93bacb6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxLZWRhcm5hdGglMjB0ZW1wbGUlMjBIaW1hbGF5YSUyMG1vdW50YWlucyUyMGRyYW1hdGljfGVufDF8fHx8MTc4MTE5NzI0MXww&ixlib=rb-4.1.0&q=80&w=1920"
+          src="/images/adi-kailash.jpg"
           alt="Kedarnath Temple with Himalayan Mountains"
           className="w-full h-full object-cover object-center"
         />
@@ -21,10 +21,19 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Tagline pill */}
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm px-4 py-1.5 rounded-full mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#3FA9F5] inline-block"></span>
-          Sacred Himalayan Pilgrimages Since 2008
+        <div className="flex flex-col items-center gap-4 mb-8">
+          {/* Shloka Card */}
+          <div className="inline-block bg-black/25 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-3 shadow-2xl transition-transform hover:scale-105">
+            <div className="text-[#66BFFF] text-lg sm:text-xl font-medium tracking-wider drop-shadow-md" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+              ॐ कर्पूरगौरं करुणावतारं संसारसारं भुजगेन्द्रहारम् ।
+            </div>
+          </div>
+
+          {/* Tagline pill */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm px-4 py-1.5 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#66BFFF] inline-block"></span>
+            Sacred Himalayan Pilgrimages Since 2008
+          </div>
         </div>
 
         <h1
@@ -33,7 +42,7 @@ export function Hero() {
         >
           Journey to the
           <br />
-          <span style={{ color: '#3FA9F5' }}>Abode of Shiva</span>
+          <span style={{ color: '#66BFFF' }}>Abode of Shiva</span>
         </h1>
 
         <p
@@ -49,7 +58,7 @@ export function Hero() {
             className="text-white px-10 py-6 rounded-xl shadow-2xl transition-all hover:scale-105"
             style={{
               fontFamily: 'Inter, sans-serif',
-              background: 'linear-gradient(135deg, #3FA9F5 0%, #1a7fd4 100%)',
+              background: 'linear-gradient(135deg, #66BFFF 0%, #1a7fd4 100%)',
               boxShadow: '0 8px 32px rgba(63,169,245,0.45)'
             }}
           >
@@ -73,15 +82,15 @@ export function Hero() {
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
           {[
             { icon: Shield, label: 'Govt. Approved' },
-            { icon: Award, label: '15+ Years Experience' },
-            { icon: CheckCircle, label: '5000+ Happy Pilgrims' },
+            { icon: Map, label: 'Expert Local Guides' },
+            { icon: Heart, label: 'Safe & Comfortable Travel' },
           ].map(({ icon: Icon, label }) => (
             <div
               key={label}
               className="flex items-center gap-2 px-5 py-2.5 rounded-full backdrop-blur-md border border-white/20"
               style={{ background: 'rgba(255,255,255,0.10)' }}
             >
-              <Icon className="w-4 h-4" style={{ color: '#3FA9F5' }} />
+              <Icon className="w-4 h-4" style={{ color: '#66BFFF' }} />
               <span className="text-sm text-white font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
                 {label}
               </span>

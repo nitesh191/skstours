@@ -1,5 +1,6 @@
 import { Facebook, Instagram, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router";
+import logoUrl from "../../../assets/skr logo.png";
 
 export function Footer() {
   return (
@@ -8,20 +9,21 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[var(--sky-blue)] flex items-center justify-center">
-                <span className="text-white font-bold text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>S</span>
-              </div>
-              <span className="text-xl font-semibold" style={{ fontFamily: 'Playfair Display, serif' }}>
-                SKR Tours & Travels
-              </span>
+            <div className="mb-4">
+              <img 
+                src={logoUrl} 
+                alt="SKR Tours Logo" 
+                className="h-14 w-auto object-contain"
+              />
             </div>
             <p className="text-white/80 mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
               Your trusted partner for sacred Himalayan pilgrimages. Where every trip starts with a smile and ends with a story.
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/skr_tour_travels?igsh=b2ZkdTEwZWZuYXZq"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-[var(--sky-blue)] flex items-center justify-center transition-colors"
               >
                 <Instagram className="w-5 h-5" />
@@ -35,7 +37,9 @@ export function Footer() {
                 <MessageCircle className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/share/17oggbVzJ1/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-[var(--sky-blue)] flex items-center justify-center transition-colors"
               >
                 <Facebook className="w-5 h-5" />
@@ -50,24 +54,24 @@ export function Footer() {
             </h4>
             <ul className="space-y-2" style={{ fontFamily: 'Inter, sans-serif' }}>
               <li>
-                <Link to="/" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
+                <a href="/#home" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
                   Home
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/#packages" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
+                <a href="/#packages" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
                   Tour Packages
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/#about" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
+                <a href="/#about" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
                   About Us
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/#contact" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
+                <a href="/#contact" className="text-white/80 hover:text-[var(--sky-blue)] transition-colors">
                   Contact
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -136,10 +140,17 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-              © 2026 SKR Tours & Travels. All rights reserved.
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col gap-4 text-center md:text-left">
+              <div className="bg-white/5 border border-white/10 px-5 py-2.5 rounded-lg inline-block self-center md:self-start shadow-inner">
+                <span className="text-[var(--sky-blue)] font-medium tracking-wide text-sm md:text-base">
+                  सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।
+                </span>
+              </div>
+              <p className="text-white/60 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                © 2026 SKR Tours & Travels. All rights reserved.
+              </p>
+            </div>
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
               <a href="#" className="text-white/60 hover:text-[var(--sky-blue)] transition-colors">
                 Privacy Policy

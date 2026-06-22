@@ -272,7 +272,7 @@ export function PackageDetail() {
                           className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm"
                           style={{
                             background: isExpanded
-                              ? "linear-gradient(135deg, #3FA9F5, #1a7fd4)"
+                              ? "linear-gradient(135deg, #66BFFF, #1a7fd4)"
                               : "linear-gradient(135deg, #f0f7ff, #e0efff)",
                             color: isExpanded ? "white" : "var(--sky-blue)",
                           }}
@@ -546,7 +546,7 @@ export function PackageDetail() {
                     onClick={handleBookingSubmit}
                     className="w-full text-white py-3 rounded-xl font-semibold transition-all hover:scale-[1.02]"
                     style={{
-                      background: "linear-gradient(135deg, #3FA9F5 0%, #1a7fd4 100%)",
+                      background: "linear-gradient(135deg, #66BFFF 0%, #1a7fd4 100%)",
                       boxShadow: "0 4px 16px rgba(63,169,245,0.35)",
                     }}
                   >
@@ -709,7 +709,7 @@ export function PackageDetail() {
           <Button
             className="w-full text-white py-3 rounded-xl font-semibold"
             style={{
-              background: "linear-gradient(135deg, #3FA9F5 0%, #1a7fd4 100%)",
+              background: "linear-gradient(135deg, #66BFFF 0%, #1a7fd4 100%)",
               boxShadow: "0 4px 16px rgba(63,169,245,0.35)",
             }}
           >

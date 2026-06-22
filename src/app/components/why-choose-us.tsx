@@ -57,7 +57,7 @@ export function WhyChooseUs() {
               <div
                 className="w-20 h-20 rounded-full flex items-center justify-center mb-4 transition-all duration-300"
                 style={{ background: 'rgba(63,169,245,0.1)' }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#3FA9F5'}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#66BFFF'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(63,169,245,0.1)'}
               >
                 <feature.icon className="w-10 h-10 text-[var(--sky-blue)] group-hover:text-white transition-colors duration-300" />

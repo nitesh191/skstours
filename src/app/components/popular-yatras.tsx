@@ -6,27 +6,27 @@ const yatras = [
   {
     id: "adi-kailash",
     title: "Adi Kailash & Om Parvat",
-    image: "https://images.unsplash.com/photo-1600476020549-7291c53b0f0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZGklMjBrYWlsYXNoJTIwbW91bnRhaW4lMjBzbm93JTIwcGVha3xlbnwxfHx8fDE3ODExOTU3NzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/adi-kailash.jpg",
   },
   {
     id: "kainchi-dham",
     title: "Kainchi Dham Retreat",
-    image: "https://images.unsplash.com/photo-1706790574525-d218c4c52b5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGFyJTIwZGhhbSUyMHlhdHJhJTIwaW5kaWElMjB0ZW1wbGV8ZW58MXx8fHwxNzgxMTk1Nzc2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/kainchi-dham.jpg",
   },
   {
     id: "kinner-kailash",
     title: "Kinner Kailash Trek",
-    image: "https://images.unsplash.com/photo-1767714727834-a7ec5373355a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbSUyMHBhcnZhdCUyMGhpbWFsYXlhJTIwc2FjcmVkJTIwbW91bnRhaW58ZW58MXx8fHwxNzgxMTk1Nzc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/kinner-kailash.jpg",
   },
   {
     id: "manimahesh-kailash",
     title: "Manimahesh Kailash Yatra",
-    image: "https://images.unsplash.com/photo-1712733900711-d0b929d0d7cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrZWRhcm5hdGglMjB0ZW1wbGUlMjB1dHRhcmFraGFuZCUyMHBpbGdyaW1hZ2V8ZW58MXx8fHwxNzgxMTk1Nzc2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/manimahesh.jpg",
   },
   {
     id: "srikhand-kailash-chandigarh",
     title: "Srikhand Kailash Yatra",
-    image: "https://images.unsplash.com/photo-1601821139314-66a4d14cfc00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWRyaW5hdGglMjB0ZW1wbGUlMjBpbmRpYSUyMHBpbGdyaW1hZ2V8ZW58MXx8fHwxNzgxMTk1NzgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/shrikhand-1.jpg",
   },
 ];
 
@@ -41,7 +41,12 @@ export function PopularYatras() {
           >
             Popular Yatras
           </h2>
-          <div className="w-20 h-1 bg-[var(--sky-blue)] mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-[var(--sky-blue)] mx-auto mb-8"></div>
+          <div className="mb-10 inline-block bg-[var(--sky-blue)]/5 px-8 py-3 rounded-full border border-[var(--sky-blue)]/20 shadow-sm">
+            <div className="text-[var(--sky-blue)] font-medium text-lg md:text-xl tracking-wide">
+              ॥ मार्गदर्शकः सर्वभूतानां शिवः ॥
+            </div>
+          </div>
           <p 
             className="text-lg text-[var(--charcoal)] max-w-2xl mx-auto"
             style={{ fontFamily: 'Inter, sans-serif' }}
