@@ -21,17 +21,19 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Shloka Card */}
-        <div className="mb-8 inline-block bg-black/25 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-3 shadow-2xl transition-transform hover:scale-105">
-          <div className="text-[#66BFFF] text-lg sm:text-xl font-medium tracking-wider drop-shadow-md" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
-            ॐ कर्पूरगौरं करुणावतारं संसारसारं भुजगेन्द्रहारम् ।
+        <div className="flex flex-col items-center gap-4 mb-8">
+          {/* Shloka Card */}
+          <div className="inline-block bg-black/25 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-3 shadow-2xl transition-transform hover:scale-105">
+            <div className="text-[#66BFFF] text-lg sm:text-xl font-medium tracking-wider drop-shadow-md" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+              ॐ कर्पूरगौरं करुणावतारं संसारसारं भुजगेन्द्रहारम् ।
+            </div>
           </div>
-        </div>
 
-        {/* Tagline pill */}
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm px-4 py-1.5 rounded-full mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#66BFFF] inline-block"></span>
-          Sacred Himalayan Pilgrimages Since 2008
+          {/* Tagline pill */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm px-4 py-1.5 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-[#66BFFF] inline-block"></span>
+            Sacred Himalayan Pilgrimages Since 2008
+          </div>
         </div>
 
         <h1
