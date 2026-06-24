@@ -457,101 +457,274 @@ export function PackageDetail() {
                 className="rounded-2xl overflow-hidden"
                 style={{
                   background: "white",
-                  boxShadow: "0 8px 40px rgba(0,0,0,0.08)",
-                  border: "1px solid rgba(0,0,0,0.06)",
+                  boxShadow: "0 12px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.04)",
+                  border: "1px solid rgba(0,0,0,0.05)",
                 }}
               >
+                {/* Header with gradient + WhatsApp badge */}
                 <div
-                  className="p-6"
+                  className="relative p-6 pb-7"
                   style={{
-                    background: "linear-gradient(135deg, var(--navy), #2a5285)",
+                    background: "linear-gradient(135deg, #1E3A5F 0%, #2a5285 60%, #3FA9F5 100%)",
                   }}
                 >
-                  <h3
-                    className="text-xl text-white mb-1"
-                    style={{ fontFamily: "Playfair Display, serif" }}
-                  >
-                    Book This Yatra
-                  </h3>
-                  <p className="text-white/70 text-sm">Fill in your details and we'll get back to you</p>
-                  {pkg.price && (
-                    <div className="mt-3">
-                      <span className="text-3xl font-bold text-white">{pkg.price}</span>
-                      <span className="text-white/60 text-sm ml-1">per person</span>
+                  {/* Decorative circles */}
+                  <div
+                    className="absolute top-0 right-0 w-24 h-24 rounded-full"
+                    style={{ background: "rgba(255,255,255,0.04)", transform: "translate(30%, -30%)" }}
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 w-16 h-16 rounded-full"
+                    style={{ background: "rgba(255,255,255,0.03)", transform: "translate(-20%, 40%)" }}
+                  />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                        style={{ background: "rgba(37,211,102,0.2)" }}
+                      >
+                        <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-white/60">
+                        Quick Booking
+                      </span>
                     </div>
-                  )}
+                    <h3
+                      className="text-xl text-white mb-1"
+                      style={{ fontFamily: "Playfair Display, serif" }}
+                    >
+                      Book This Yatra
+                    </h3>
+                    <p className="text-white/60 text-sm">
+                      Get instant confirmation on WhatsApp
+                    </p>
+                    {pkg.price && (
+                      <div className="mt-4 flex items-baseline gap-1">
+                        <span className="text-3xl font-bold text-white" style={{ letterSpacing: "-0.02em" }}>
+                          {pkg.price}
+                        </span>
+                        <span className="text-white/50 text-xs font-medium">/ person</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                <div className="p-6 space-y-4">
+                {/* Form Body */}
+                <div className="p-6 space-y-5">
+                  {/* Name Field */}
                   <div>
-                    <label className="block text-xs font-medium text-[var(--charcoal)] mb-1.5">Full Name *</label>
+                    <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--navy)] mb-2 uppercase tracking-wide">
+                      <Users className="w-3.5 h-3.5 text-[var(--sky-blue)]" />
+                      Full Name
+                      <span className="text-red-400">*</span>
+                    </label>
                     <input
                       type="text"
-                      placeholder="Enter your name"
+                      placeholder="Enter your full name"
                       value={bookingForm.name}
                       onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-[var(--sky-blue)] focus:ring-2 focus:ring-[var(--sky-blue)]/20 transition-all"
-                      style={{ background: "#fafbfc" }}
+                      className="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+                      style={{
+                        background: "#f8fafc",
+                        border: "1.5px solid #e2e8f0",
+                        outline: "none",
+                      }}
+                      onFocus={(e) => {
+                        e.target.style.borderColor = "var(--sky-blue)";
+                        e.target.style.boxShadow = "0 0 0 3px rgba(63,169,245,0.12)";
+                        e.target.style.background = "#fff";
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = "#e2e8f0";
+                        e.target.style.boxShadow = "none";
+                        e.target.style.background = "#f8fafc";
+                      }}
                     />
                   </div>
+
+                  {/* Phone Field */}
                   <div>
-                    <label className="block text-xs font-medium text-[var(--charcoal)] mb-1.5">Phone Number *</label>
-                    <input
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      value={bookingForm.phone}
-                      onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-[var(--sky-blue)] focus:ring-2 focus:ring-[var(--sky-blue)]/20 transition-all"
-                      style={{ background: "#fafbfc" }}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-[var(--charcoal)] mb-1.5">
-                      Number of Travelers
+                    <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--navy)] mb-2 uppercase tracking-wide">
+                      <Phone className="w-3.5 h-3.5 text-[var(--sky-blue)]" />
+                      Phone / WhatsApp
+                      <span className="text-red-400">*</span>
                     </label>
-                    <input
-                      type="number"
-                      min="1"
-                      placeholder="e.g. 2"
-                      value={bookingForm.travelers}
-                      onChange={(e) => setBookingForm({ ...bookingForm, travelers: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-[var(--sky-blue)] focus:ring-2 focus:ring-[var(--sky-blue)]/20 transition-all"
-                      style={{ background: "#fafbfc" }}
-                    />
+                    <div className="relative">
+                      <span
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-medium text-[var(--charcoal)]/50 select-none"
+                        style={{ pointerEvents: "none" }}
+                      >
+                        +91
+                      </span>
+                      <input
+                        type="tel"
+                        placeholder="98765 43210"
+                        value={bookingForm.phone}
+                        onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
+                        className="w-full pl-12 pr-4 py-3 rounded-xl text-sm transition-all duration-200"
+                        style={{
+                          background: "#f8fafc",
+                          border: "1.5px solid #e2e8f0",
+                          outline: "none",
+                        }}
+                        onFocus={(e) => {
+                          e.target.style.borderColor = "var(--sky-blue)";
+                          e.target.style.boxShadow = "0 0 0 3px rgba(63,169,245,0.12)";
+                          e.target.style.background = "#fff";
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.borderColor = "#e2e8f0";
+                          e.target.style.boxShadow = "none";
+                          e.target.style.background = "#f8fafc";
+                        }}
+                      />
+                    </div>
                   </div>
+
+                  {/* Two-column row */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {/* Travelers */}
+                    <div>
+                      <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--navy)] mb-2 uppercase tracking-wide">
+                        <Users className="w-3.5 h-3.5 text-[var(--sky-blue)]" />
+                        Travelers
+                      </label>
+                      <input
+                        type="number"
+                        min="1"
+                        placeholder="e.g. 2"
+                        value={bookingForm.travelers}
+                        onChange={(e) => setBookingForm({ ...bookingForm, travelers: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+                        style={{
+                          background: "#f8fafc",
+                          border: "1.5px solid #e2e8f0",
+                          outline: "none",
+                        }}
+                        onFocus={(e) => {
+                          e.target.style.borderColor = "var(--sky-blue)";
+                          e.target.style.boxShadow = "0 0 0 3px rgba(63,169,245,0.12)";
+                          e.target.style.background = "#fff";
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.borderColor = "#e2e8f0";
+                          e.target.style.boxShadow = "none";
+                          e.target.style.background = "#f8fafc";
+                        }}
+                      />
+                    </div>
+
+                    {/* Date */}
+                    <div>
+                      <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--navy)] mb-2 uppercase tracking-wide">
+                        <Calendar className="w-3.5 h-3.5 text-[var(--sky-blue)]" />
+                        Date
+                      </label>
+                      <input
+                        type="date"
+                        value={bookingForm.date}
+                        onChange={(e) => setBookingForm({ ...bookingForm, date: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200"
+                        style={{
+                          background: "#f8fafc",
+                          border: "1.5px solid #e2e8f0",
+                          outline: "none",
+                        }}
+                        onFocus={(e) => {
+                          e.target.style.borderColor = "var(--sky-blue)";
+                          e.target.style.boxShadow = "0 0 0 3px rgba(63,169,245,0.12)";
+                          e.target.style.background = "#fff";
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.borderColor = "#e2e8f0";
+                          e.target.style.boxShadow = "none";
+                          e.target.style.background = "#f8fafc";
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Message */}
                   <div>
-                    <label className="block text-xs font-medium text-[var(--charcoal)] mb-1.5">
-                      Preferred Travel Date
+                    <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--navy)] mb-2 uppercase tracking-wide">
+                      <MessageCircle className="w-3.5 h-3.5 text-[var(--sky-blue)]" />
+                      Message
+                      <span className="text-[var(--charcoal)]/40 normal-case tracking-normal font-normal">(optional)</span>
                     </label>
-                    <input
-                      type="date"
-                      value={bookingForm.date}
-                      onChange={(e) => setBookingForm({ ...bookingForm, date: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-[var(--sky-blue)] focus:ring-2 focus:ring-[var(--sky-blue)]/20 transition-all"
-                      style={{ background: "#fafbfc" }}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-[var(--charcoal)] mb-1.5">Message (Optional)</label>
                     <textarea
                       rows={3}
-                      placeholder="Any special requirements..."
+                      placeholder="Any special requirements or questions..."
                       value={bookingForm.message}
                       onChange={(e) => setBookingForm({ ...bookingForm, message: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-[var(--sky-blue)] focus:ring-2 focus:ring-[var(--sky-blue)]/20 transition-all resize-none"
-                      style={{ background: "#fafbfc" }}
+                      className="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 resize-none"
+                      style={{
+                        background: "#f8fafc",
+                        border: "1.5px solid #e2e8f0",
+                        outline: "none",
+                      }}
+                      onFocus={(e) => {
+                        e.target.style.borderColor = "var(--sky-blue)";
+                        e.target.style.boxShadow = "0 0 0 3px rgba(63,169,245,0.12)";
+                        e.target.style.background = "#fff";
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = "#e2e8f0";
+                        e.target.style.boxShadow = "none";
+                        e.target.style.background = "#f8fafc";
+                      }}
                     />
                   </div>
-                  <Button
+
+                  {/* WhatsApp Submit Button */}
+                  <button
                     onClick={handleBookingSubmit}
-                    className="w-full text-white py-3 rounded-xl font-semibold transition-all hover:scale-[1.02]"
+                    className="group w-full flex items-center justify-center gap-2.5 text-white py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer"
                     style={{
-                      background: "linear-gradient(135deg, #66BFFF 0%, #1a7fd4 100%)",
-                      boxShadow: "0 4px 16px rgba(63,169,245,0.35)",
+                      background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+                      boxShadow: "0 4px 16px rgba(37,211,102,0.3), 0 1px 3px rgba(0,0,0,0.08)",
+                      border: "none",
+                      outline: "none",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = "0 6px 24px rgba(37,211,102,0.4), 0 2px 4px rgba(0,0,0,0.1)";
+                      e.currentTarget.style.transform = "translateY(-1px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 4px 16px rgba(37,211,102,0.3), 0 1px 3px rgba(0,0,0,0.08)";
+                      e.currentTarget.style.transform = "translateY(0)";
                     }}
                   >
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white transition-transform duration-300 group-hover:scale-110">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
                     Send Enquiry via WhatsApp
-                  </Button>
+                  </button>
+
+                  {/* Trust indicators */}
+                  <div
+                    className="flex items-center justify-center gap-4 pt-3"
+                    style={{ borderTop: "1px solid #f1f5f9" }}
+                  >
+                    <div className="flex items-center gap-1.5 text-[10px] text-[var(--charcoal)]/50">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      Secure
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[10px] text-[var(--charcoal)]/50">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Instant Reply
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[10px] text-[var(--charcoal)]/50">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      No Spam
+                    </div>
+                  </div>
                 </div>
               </div>
 
