@@ -44,6 +44,25 @@ export function AboutUs() {
               just a trip, but a transformative spiritual experience.
             </p>
 
+            {/* Shloka block */}
+            <div
+              className="rounded-xl p-5 mb-6"
+              style={{
+                background: "linear-gradient(135deg, rgba(30,58,95,0.06), rgba(63,169,245,0.08))",
+                border: "1px solid rgba(63,169,245,0.2)",
+              }}
+            >
+              <p className="text-[var(--navy)] text-xl font-medium mb-1" style={{ fontFamily: "Playfair Display, serif" }}>
+                हिमालये न केवलं दृश्यं रमणीयम्,
+              </p>
+              <p className="text-[var(--navy)] text-xl font-medium mb-3" style={{ fontFamily: "Playfair Display, serif" }}>
+                अपितु प्रत्येकं क्षणं शिवमयम्॥
+              </p>
+              <p className="text-[var(--charcoal)]/60 text-sm italic" style={{ fontFamily: "Inter, sans-serif" }}>
+                "In the Himalayas, every moment is not just beautiful — every moment is filled with Shiva."
+              </p>
+            </div>
+
             <p 
               className="text-lg text-[var(--charcoal)] mb-8 leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
@@ -56,10 +75,11 @@ export function AboutUs() {
             <div className="space-y-4 mb-8">
               {[
                 "Government-approved and certified tour operator",
-                "Experienced guides with deep spiritual knowledge",
-                "Comfortable and safe travel arrangements",
-                "24/7 support throughout your pilgrimage",
-                "Transparent pricing with no hidden charges",
+                "Born-local expert guides — native to Kumaon & Himachal Himalayas",
+                "400+ successful Adi Kailash & Himalayan yatras conducted",
+                "Inner Line Permit (ILP) handled end-to-end — zero paperwork for you",
+                "24/7 on-ground support throughout your pilgrimage",
+                "Transparent pricing — no hidden charges, ever",
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-[var(--sky-blue)] flex-shrink-0 mt-1" />

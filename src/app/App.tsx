@@ -11,6 +11,7 @@ import { FAQ } from "./components/faq";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
 import { PackageDetail } from "./components/package-detail";
+import { AllPackagesPage } from "./components/all-packages-page";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
@@ -48,6 +49,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/package/:packageId" element={<PackageDetail />} />
+          <Route path="/packages" element={<AllPackagesPage />} />
         </Routes>
       </div>
     </BrowserRouter>

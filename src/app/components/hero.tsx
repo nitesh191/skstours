@@ -1,7 +1,44 @@
 import { Button } from "./ui/button";
 import { Shield, Map, Heart, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+
+const SHLOKAS = [
+  {
+    sanskrit: "हिमालयः शिवस्य मौनमयः स्वरूपः, तस्य शिखरेषु प्रेमरूपं दिव्यं वसति॥",
+    hindi: "Himalaya Shiv ka shaant roop hai, jahan unka prem basta hai",
+  },
+  {
+    sanskrit: "हिमशिखराणां सौन्दर्ये शिवस्य दर्शनम्, प्रत्येकं दृश्यं भवति दिव्यानुभवः॥",
+    hindi: "Himalaya ki sundarta mein Shiv ka darshan hota hai",
+  },
+  {
+    sanskrit: "हिमालयस्य शान्तिः शिवस्य स्पर्शः, तत्र गमनं आत्मनः मिलनम्॥",
+    hindi: "Himalaya ki shanti Shiv ka sparsh hai",
+  },
+  {
+    sanskrit: "शिवः हिमालये, हिमालयः शिवे, एषः सम्बन्धः अनादिः अनन्तः॥",
+    hindi: "Shiv aur Himalaya ka rishta anant hai",
+  },
+  {
+    sanskrit: "हिमालयस्य मार्गे शिवस्य आह्वानम्, तत्र यात्रा भवति आत्मयात्रा॥",
+    hindi: "Yeh yatra andar ki yatra ban jaati hai",
+  },
+];
 
 export function Hero() {
+  const [shlokaIdx, setShlokaIdx] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setShlokaIdx((i) => (i + 1) % SHLOKAS.length);
+        setFade(true);
+      }, 400);
+    }, 5000);
+    return () => clearInterval(t);
+  }, []);
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
       {/* Background Image */}
@@ -22,10 +59,39 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex flex-col items-center gap-4 mb-8">
-          {/* Shloka Card */}
-          <div className="inline-block bg-black/25 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-3 shadow-2xl transition-transform hover:scale-105">
-            <div className="text-[#66BFFF] text-lg sm:text-xl font-medium tracking-wider drop-shadow-md" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
-              ॐ कर्पूरगौरं करुणावतारं संसारसारं भुजगेन्द्रहारम् ।
+          {/* Rotating Shloka Card */}
+          <div className="inline-block bg-black/30 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-4 shadow-2xl max-w-2xl">
+            <div
+              className="text-[#66BFFF] text-base sm:text-lg font-medium tracking-wide mb-1 drop-shadow-md text-center"
+              style={{
+                textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+                fontFamily: 'Playfair Display, serif',
+                opacity: fade ? 1 : 0,
+                transition: 'opacity 0.4s ease',
+              }}
+            >
+              {SHLOKAS[shlokaIdx].sanskrit}
+            </div>
+            <div
+              className="text-white/55 text-xs text-center italic"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                opacity: fade ? 1 : 0,
+                transition: 'opacity 0.4s ease',
+              }}
+            >
+              {SHLOKAS[shlokaIdx].hindi}
+            </div>
+            {/* Dot indicators */}
+            <div className="flex justify-center gap-1.5 mt-2.5">
+              {SHLOKAS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setFade(false); setTimeout(() => { setShlokaIdx(i); setFade(true); }, 300); }}
+                  className="w-1.5 h-1.5 rounded-full transition-all"
+                  style={{ background: i === shlokaIdx ? '#66BFFF' : 'rgba(255,255,255,0.3)' }}
+                />
+              ))}
             </div>
           </div>
 

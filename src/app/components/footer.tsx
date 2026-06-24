@@ -5,6 +5,53 @@ import logoUrl from "../../../assets/skr logo.png";
 export function Footer() {
   return (
     <footer className="bg-[var(--navy)] text-white">
+
+      {/* Scrolling Shloka Marquee */}
+      <div
+        className="overflow-hidden py-3 border-b border-white/10"
+        style={{ background: "rgba(255,255,255,0.04)" }}
+      >
+        <div
+          className="flex gap-16 whitespace-nowrap"
+          style={{
+            animation: "marquee 32s linear infinite",
+          }}
+        >
+          {[
+            "हिमालयः शिवस्य प्रेममयः आलयः, तत्र प्रत्येकं कणं दिव्यं भवति॥",
+            "🕉",
+            "शिवः हिमालये, हिमालयः शिवे, एषः सम्बन्धः अनादिः अनन्तः॥",
+            "🕉",
+            "हिमालयस्य सौन्दर्यं न केवलं दृष्टेः, अपितु आत्मनः गहनस्पर्शः॥",
+            "🕉",
+            "हिमालयः सौन्दर्यस्य शिखरम्, शिवः तस्य आत्मा शाश्वतः॥",
+            "🕉",
+            "यत्र हिमालयस्य छाया शीतला, तत्र शिवस्य कृपा अनुभूयते॥",
+            "🕉",
+          ].concat([
+            "हिमालयः शिवस्य प्रेममयः आलयः, तत्र प्रत्येकं कणं दिव्यं भवति॥",
+            "🕉",
+            "शिवः हिमालये, हिमालयः शिवे, एषः सम्बन्धः अनादिः अनन्तः॥",
+            "🕉",
+            "हिमालयस्य सौन्दर्यं न केवलं दृष्टेः, अपितु आत्मनः गहनस्पर्शः॥",
+          ]).map((s, i) => (
+            <span
+              key={i}
+              className="text-[#66BFFF]/70 text-sm font-medium"
+              style={{ fontFamily: "Playfair Display, serif" }}
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Column */}
@@ -130,7 +177,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[var(--sky-blue)] flex-shrink-0 mt-0.5" />
                 <div className="text-white/80">
-                  A 103, Kalka Ji,<br />
+                  103, Kalka Ji,<br />
                   New Delhi 110019
                 </div>
               </li>
