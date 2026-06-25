@@ -176,7 +176,7 @@ export function Navbar() {
         .logo-glass {
           width: 36px;
           height: 36px;
-          border-radius: 11px;
+          border-radius: 30px;
           background: linear-gradient(135deg, #66BFFF, #0b6cb8);
           display: flex;
           align-items: center;
@@ -326,10 +326,10 @@ export function Navbar() {
                 flexShrink: 0,
               }}
             >
-              <img 
-                src={logoUrl} 
-                alt="SKR Tours Logo" 
-                style={{ height: "42px", width: "auto", objectFit: "contain" }} 
+              <img
+                src={logoUrl}
+                alt="SKR Tours Logo"
+                style={{ height: "42px", width: "auto", objectFit: "contain", borderRadius: "30%" }}
               />
               <span
                 style={{
@@ -476,7 +476,7 @@ export function Navbar() {
             <img
               src={logoUrl}
               alt="SKR Tours Logo"
-              style={{ height: "40px", width: "auto", objectFit: "contain" }}
+              style={{ height: "40px", width: "auto", objectFit: "contain", borderRadius: "30%" }}
             />
             <span
               style={{

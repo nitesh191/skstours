@@ -120,28 +120,32 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
-          <Button
-            className="text-white px-10 py-6 rounded-xl shadow-2xl transition-all hover:scale-105"
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              background: 'linear-gradient(135deg, #66BFFF 0%, #1a7fd4 100%)',
-              boxShadow: '0 8px 32px rgba(63,169,245,0.45)'
-            }}
-          >
-            Book Your Yatra Now
-          </Button>
-          <Button
-            variant="outline"
-            className="px-10 py-6 rounded-xl backdrop-blur-sm transition-all hover:scale-105"
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              background: 'transparent',
-              border: '1.5px solid rgba(255,255,255,0.55)',
-              color: '#ffffff',
-            }}
-          >
-            Explore Packages
-          </Button>
+          <a href="#contact" className="block">
+            <Button
+              className="text-white w-full px-10 py-6 rounded-xl shadow-2xl transition-all hover:scale-105"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                background: 'linear-gradient(135deg, #66BFFF 0%, #1a7fd4 100%)',
+                boxShadow: '0 8px 32px rgba(63,169,245,0.45)'
+              }}
+            >
+              Book Your Yatra Now
+            </Button>
+          </a>
+          <a href="#packages" className="block">
+            <Button
+              variant="outline"
+              className="w-full px-10 py-6 rounded-xl backdrop-blur-sm transition-all hover:scale-105"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                background: 'transparent',
+                border: '1.5px solid rgba(255,255,255,0.55)',
+                color: '#ffffff',
+              }}
+            >
+              Explore Packages
+            </Button>
+          </a>
         </div>
 
         {/* Trust Badges */}

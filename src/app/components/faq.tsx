@@ -263,11 +263,11 @@ export function FAQ() {
               className="text-2xl sm:text-3xl mb-3 text-[var(--navy)]"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
-              Meet Your Guides
+              Meet Your Spiritual Guides
             </h3>
             <div className="w-14 h-1 bg-[var(--sky-blue)] mx-auto mb-4" />
             <p className="text-[var(--charcoal)] max-w-xl mx-auto text-base" style={{ fontFamily: "Inter, sans-serif" }}>
-              Local experts who know every trail, temple, and hidden sacred spot in the Himalayas — your safety and spiritual experience is their life's work.
+              Meet the experienced and trained guides who will accompany you on your journey. These professionals know every trail, temple, and sacred spot in the Himalayas. Your safety and spiritual experience are their top priority.
             </p>
           </div>
 
